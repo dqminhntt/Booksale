@@ -1,0 +1,185 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+
+<!--TopMenu-->
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" onclick="document.getElementById('id01').style.display='block'" href="#">
+          Thay Đổi Qui Định
+        </a>
+      </li>
+      <!--Form Submenu1-->
+      <div id="id01" class="modal">
+        <form class="modal-content animate" action="/action_page.php" method="post">
+
+          <div>
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2 style="text-align:center;">Thay Đổi Qui Định</h2>
+          </div>
+
+          <div class="container">
+           <table class="table table-hover">
+              <tr>
+                <th><label for="#"><b>Số Lượng Nhập Ít Nhất</b></label></th>
+                <td><input type="number" placeholder="Enter Number" name="#" required></td>
+              </tr>
+
+              <tr>
+                <th><label for="#"><b>Chỉ Nhập Các Đầu Sách Có Số Lượng Tồn Ít Hơn</b></label></th>
+                <td><input type="number" placeholder="Enter Number" name="#" required></td>
+              </tr>
+
+             <tr>
+                <th><label for="#"><b>Chỉ bán cho các khách hàng nợ không quá</b></label></th>
+                <td><input type="number" placeholder="Enter Number" name="#" required></td>
+             </tr>
+
+             <tr>
+                <th><label for="#"><b>Đầu sách có lượng tồn sau khi bán ít nhất là</b></label></th>
+                <td><input type="number" placeholder="Enter Number" name="#" required></td>
+              </tr>
+
+
+          </table>
+
+            <label>
+              <b>Số tiền thu không vượt quá số tiền khách hàng đang nợ</b>
+              <input type="checkbox" checked="checked" name="remember"> Có
+              <input type="checkbox" name="remember"> Không
+            </label>
+            <button type="submit" style="background-color: #02ccba">Lưu</button>
+
+          </div>
+
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <!-- End Form Submenu1-->
+
+      
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quản Lý Nhân Viên</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tra Cứu Kho Sách</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Lập Hóa Đơn Bán Sách</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Lập Phiếu Thu Tiền</a>
+      </li>
+
+      <!--Submenu4-->
+      <li class="nav-item">
+        <a class="nav-link" onclick="document.getElementById('id02').style.display='block'" href="{{url_for('add_or_update_bookproduct')}}">
+          Nhap sach
+        </a>
+      </li>
+      <!--Form Submenu5-->
+
+      <!--End Submenu4-->
+
+      <li class="nav-item">
+        <a class="nav-link" onclick="document.getElementById('id02').style.display='block'" href="#">
+          Lập Phiếu Nhập Sách
+        </a>
+      </li>
+      <!--Form Submenu5-->
+      <div id="id02" class="modal">
+        <form class="modal-content animate" action="/action_page.php" method="post">
+          <div>
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h2 style="text-align:center;">Phiếu Nhập Sách</h2>
+          </div>
+          <div class="container">
+            <label for="date"><b>Ngày Nhập</b></label>
+            <input type="date" class="floating-input" name="#" />
+            </br>
+
+           <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Sách</th>
+                <th>Thể Loại</th>
+                <th>Tác Giả</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" placeholder="STT" name="#" required></td>
+                <td><input type="text" placeholder="Text" name="#" required></td>
+                <td><input type="text" placeholder="Text" name="#" required></td>
+                <td><input type="text" placeholder="Text" name="#" required></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+            <button type="submit" style="background-color: #02ccba">Lưu</button>
+          </div>
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <!--End Form Submenu5-->
+
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+<section id="Contact" class="content-section">
+    <div class="container">
+      <div class="block-heading">
+        <h2>Thông Tin Nhân Viên</h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6" >
+              <img src="{{ url_for('static', filename='img/map.jpg') }}" alt="Slide" style="width:100%">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="form-wrap">
+            <form action="javascript:void(0)" method="post">
+              <div class="fname floating-label">
+                <label for="title">Name</label>
+              </div>
+              <div class="email floating-label">
+                <input type="email" class="floating-input" name="email" />
+                <label for="email">Email</label>
+              </div>
+              <div class="contact floating-label">
+                <input type="tel" class="floating-input" name="contact" />
+                <label for="number">Mobile</label>
+              </div>
+              <div class="company floating-label">
+                <input type="date" class="floating-input" name="company" />
+                <label for="date">Ngày Sinh</label>
+              </div>
+              <div class="submit-btn">
+                <button type="submit">Cập Nhật</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock body %}
+
+
+<!--footer-->
