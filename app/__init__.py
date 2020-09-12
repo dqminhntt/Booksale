@@ -9,8 +9,10 @@ from flask_admin import Admin
 
 app = Flask(__name__)
 app.secret_key = "123456"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:tattrang21999@localhost/minh123?charset=utf8mb4"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:1111@localhost/minh123?charset=utf8mb4"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
+app.config['MYSQL_HOST'] = 'localhost'
+
 
 db = SQLAlchemy(app)
 

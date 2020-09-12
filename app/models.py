@@ -58,6 +58,15 @@ class Bookproduct(db.Model):
         return  self.name
 
 
+class regulation(db.Model):
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(255), nullable=False)
+    value = Column(Float, default=0)
+
+    def __str__(self):
+        return  self.name
+
+
 
 
 

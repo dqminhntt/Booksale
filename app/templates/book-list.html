@@ -1,54 +1,39 @@
-{% extends "layouts/base.html" %}
-
-{% block title %}- Tra cứu sổ{% endblock title %}
-
-{% block stylesheets %}
-<link rel="stylesheet" href="static/assets/css/passbook-list.css">
-{% endblock stylesheets %}
-
-{% block content %}
-
-<div class="container-fluid ">
-    <div class="row">
-        <div class="col-9">
-            <table class="table">
-                <thead>
+{% extends 'base/base.html' %}
+{% block body %}
+<section id="Banner" class="content-section">
+    <div class="container content-wrap text-center">
+        <h1>Tra cuu sach</h1>
+        <form action="{{ url_for('booklist_cashier') }}">
+            <div class="input-group mb-3">
+                <input type="search" name="keyword" class="form-control" placeholder="Ten sach" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-dark " type="submit" id="button-addon2">Search</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-dark ">
+              <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Khách hàng</th>
-                    <th scope="col">Loại sổ tiết kiệm</th>
-                    <th scope="col">Số dư</th>
-                    <th scope="col">Ngày mở sổ</th>
-                    <th scope="col">Thao tác</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Gia</th>
+                  <th scope="col">So luong</th>
+                    <th scope="col"></th>
                 </tr>
-                </thead>
-                <tbody>
-                {% for passbook in passbooks %}
+              </thead>
+              <tbody>
+                {% for bookproduct in bookproducts %}
                 <tr>
-                    <th scope="row">{{ passbook.id }}</th>
-                    <td>{{ passbook.customer_id }}</td>
-                    <td>{{ passbook.passbook_type_id }}</td>
-                    <td>{{ "{:,.0f}".format(passbook.balance_amount) }} VNĐ</td>
-                    <td>{{ passbook.open_date }}</td>
-                    <td>
-                        <button class="btn btn-warning">Giao dịch</button>
-                    </td>
+                  <th scope="row">{{bookproduct.id}}</th>
+                  <td>{{bookproduct.name}}</td>
+                  <td>{{bookproduct.price}}</td>
+                  <td>{{bookproduct.quantity}}</td>
+                    <td><a href="{{ url_for('add_or_update_bookproduct')}}"><button class="btn btn-dark " type="button" id="button-addon3" >Cap Nhat</button></a></td>
                 </tr>
                 {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col-3 note">
-
-        </div>
-
+              </tbody>
+        </table>
     </div>
-</div>
-
-{% endblock content %}
-
-{% block javascripts %}
-<script type="text/javascript">
-
-</script>
-{% endblock javascripts %}
+    <div class="overlay"></div>
+</section>
+{% endblock %}
